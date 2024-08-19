@@ -1,3 +1,4 @@
+import 'package:calculator_app/core/utils/button_color_controller.dart';
 import 'package:calculator_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,6 +48,7 @@ class CalculatorScreen extends ConsumerWidget {
   }
 
   Widget _buildButtonGrid(CalculatorViewModel viewModel) {
+    final btnCtrl = ButtonColorController();
     return Expanded(
       flex: 2,
       child: GridView.builder(
@@ -59,7 +61,7 @@ class CalculatorScreen extends ConsumerWidget {
             child: Container(
               margin: EdgeInsets.all(2),
               decoration: BoxDecoration(
-                color: Colors.blueAccent,
+                color: btnCtrl.colorChecker(index),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Center(
