@@ -2,9 +2,9 @@ import 'package:riverpod/riverpod.dart';
 import 'package:calculator_app/domain/use_cases/calculate_expression.dart';
 import 'package:calculator_app/data/models/calculator_model.dart';
 
-class CalculatorViewmodel extends StateNotifier<CalculatorModel> {
+class CalculatorViewModel extends StateNotifier<CalculatorModel> {
   final CalculateExpression calculateExpression;
-  CalculatorViewmodel(this.calculateExpression)
+  CalculatorViewModel(this.calculateExpression)
       : super(
           CalculatorModel(expression: '', result: ''),
         );
@@ -27,6 +27,6 @@ class CalculatorViewmodel extends StateNotifier<CalculatorModel> {
 }
 
 final calculatorViewModelProvider =
-    StateNotifierProvider<CalculatorViewmodel, CalculatorModel>((ref) {
-  return CalculatorViewmodel(CalculateExpression());
+    StateNotifierProvider<CalculatorViewModel, CalculatorModel>((ref) {
+  return CalculatorViewModel(CalculateExpression());
 });
