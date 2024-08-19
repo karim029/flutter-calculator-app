@@ -13,9 +13,16 @@ class CalculatorScreen extends ConsumerWidget {
     final viewModelNotifier = ref.watch(calculatorViewModelProvider.notifier);
 
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 234, 234, 234),
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
-        title: const Text('Calculator'),
+        backgroundColor: numbersColor,
+        title: const Text(
+          'Calculator',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -24,7 +31,7 @@ class CalculatorScreen extends ConsumerWidget {
               alignment: Alignment.centerRight,
               child: Text(
                 viewModel.expression,
-                style: TextStyle(fontSize: 24),
+                style: TextStyle(fontSize: 26),
               ),
             ),
           ),
@@ -56,8 +63,15 @@ class CalculatorScreen extends ConsumerWidget {
             crossAxisCount: 4, childAspectRatio: 1.4),
         itemCount: buttons.length, // Add itemCount to GridView.builder
         itemBuilder: (context, index) {
-          return GestureDetector(
+          return InkWell(
+            borderRadius: BorderRadius.circular(30),
+            hoverColor: Color.fromARGB(255, 17, 0, 57),
             onTap: () => viewModel.onButtonPressed(buttons[index]),
+            splashColor: const Color.fromARGB(255, 135, 132, 132)
+                .withOpacity(0.3), // Splash effect color
+            highlightColor: const Color.fromARGB(255, 97, 96, 96)
+                .withOpacity(0.1), // Highlight effect color
+            radius: 30,
             child: Container(
               margin: EdgeInsets.all(2),
               decoration: BoxDecoration(
@@ -67,7 +81,7 @@ class CalculatorScreen extends ConsumerWidget {
               child: Center(
                 child: Text(
                   buttons[index],
-                  style: TextStyle(fontSize: 24, color: Colors.white),
+                  style: TextStyle(fontSize: 26, color: Colors.white),
                 ),
               ),
             ),
